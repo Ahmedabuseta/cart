@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style/all.css">
+    <link rel="stylesheet" href="./style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task</title>
+    <style>
+        .container-fliud{
+            gap: 20px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        /* .d-none{
+            display: block !important;
+        } */
+        .product:hover #widge{
+            display: inline !important;
+        }
+    </style>
+</head>
+
+
+<body id="home" class="text-capitalize f-s-13 " style="background-color: #181a1b;">
+    <!-- -----nav----------- -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light fixed-top">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="#home">
+            <img src="./img/cabbage.png" alt="logo" class="border-end p-2"><span class="ms-1  fs-1 " style="color: #30aa44;"> ف</span>رشتنا
+            </a>
+            <button class="navbar-toggler btn border-success ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+            <div class=" collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#product-start">products</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2 border bg-muted" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </div>
+                <span class="ms-3  fs-2 text-danger position-relative" >
+                    <i class="fa-solid fa-cart-shopping" id="cart-icon" style="cursor: pointer;"> </i>
+                    <span style="font-size: 10px;" id="product-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" >0</span>
+                </span>
+        </div>
+    </nav>
+
+    <div class="container-fliud p-1 position-relative " style="top: 150px;">
+<!-- --------cart------------- -->
+    <div id="cart"   class="d-none bg-dark text-light fs-5 cart  d-flex flex-column pe-3 ps-3 col-sm-12 col-md-6 col-xl-4 position-fixed  end-0   overflow-auto bg-light  " style="z-index: 5000;top: 110px; min-height: 200px; max-height:75vh;">
+        <button type="button" class="btn-close btn m-1  text-danger position-sticky top-0 start-0 bg-danger rounded-circle flex-shrink-0" style="z-index: 5002;"></button>
+        <div id="cart-added-products" class="d-flex flex-column mt-2">
+        </div>
+        <div class="position-sticky bottom-0 bg-dark">
+            <div class="cart-product d-flex justify-content-between  flex-row border-bottom mb-3 ">
+                <p>charge</p><p><span id="amount">1.49 </span>L.E</p>
+            </div>
+            <div class="cart-product total d-flex justify-content-between  flex-row">
+                <p>total</p><p><span id="total">1.49</span> L.E</p>
+            </div>
+            <button class="btn  bg-success mb-2 d-block m-auto w-50">check out</button>
+        </div>
+        </div>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide container" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active btn" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" class="btn" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" class="btn" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner " >
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="./img/close-up-photo-leaves-lettuce-grey-background.jpg" style="height: 60vh !important;" class=" d-block w-100" alt="...">
+                    <div class="carousel-caption  d-md-block">
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="./img/essential-oil-peppermint-bottle-with-fresh-green-peppermint.jpg"style="height: 60vh !important;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption  d-md-block">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/fresh-broccoli-cutting-board-table.jpg"style="height: 60vh !important;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d- d-block">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    <div id="product-start" class="container text-center text-light p-3">
+        <h1 >We make you surfeited</h1>
+        <div class="w-25 border m-auto border-success "></div>
+    </div>
+    <!-- toast -->
+    <div id="toastContainer" class="position-fixed top-0   end-0 p-3" style="z-index: 11000">
+    </div>
+
+    <div id="products" class="container-fliud d-flex flex-row  flex-wrap justify-content-center text-light">
+        <div class=" bg-dark product border border-muted p-3 rounded  col-lg-3   col-m-6 col-xs-12" style="width:350px;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa fa-bomb "> </i>
+                    <span id="widge" class="ms-3 d-none " >SALE</span></div>
+                <img src="./img/top-view-cut-green-onion-cutting-board-with-other-onions-around-wooden-background.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute">14.99 L.E</span>
+                    <span class="d-block text-danger price" price = '9.99'>9.99</span> L.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title">green onion | بصل</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button  class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+        <div class=" bg-dark product border p-3 rounded col-lg-3 col-m-6 col-xs-12" style="width:350px;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa fa-money-bill-1 "> </i>
+                    <span id="widge" class="ms-3 d-none " >50%OFF</span></div>
+                <img src="./img/fresh-broccoli-cutting-board-table.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute">18.99 L.E</span>
+                    <span class="d-block text-danger price"price = "9.99">9.99</span> L.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title">broccli | بروكلي</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+        <div class=" bg-dark product border p-3 rounded col-lg-3 col-m-6 col-xs-12" style="width:350px;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa fa-bomb "> </i>
+                    <span id="widge" class="ms-3 d-none " >SALE</span></div>
+                <img src="./img/close-up-photo-leaves-lettuce-grey-background.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute">8.99 L.E</span>
+                    <span class="d-block text-danger price"price = "5.99">5.99</span> L.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title"> lettuce | خس</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+        <div class=" bg-dark product border p-3 rounded col-lg-3 col-m-6 col-xs-12" style="width:350px;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa fa-bomb "> </i>
+                    <span id="widge" class="ms-3 d-none " >SALE</span></div>
+                <img src="./img/front-view-fresh-cauliflower-with-greens-grey-desk.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute">15.99 L.E</span>
+                    <span class="d-block text-danger price"price = "11.99">11.99</span> L.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title">cauliflower | كرنب</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+        <div class="order-first bg-dark product border p-3 rounded col-lg-3 col-m-6 col-xs-12" style="width:350px; border-color: #363c3e;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa fa-bomb "> </i>
+                    <span id="widge" class="ms-3 d-none " >SALE</span></div>
+                <img src="./img/washed-spinach-leaves-bowl-wooden-table.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute bg-dark" >15,999 L.E</span>
+                    <span class="d-block text-danger price"price = "11999.99">11,999 </span>.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title">watercress | جرجير</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+        <div class=" bg-dark product border p-3 rounded col-lg-3 col-m-6 col-xs-12" style="width:350px;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa fa-money-bill-1 "> </i>
+                    <span id="widge" class="ms-3 d-none " >50%OFF</span></div>
+                <img src="./img/top-view-fresh-greens-white-background.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute">8.99 L.E</span>
+                    <span class="d-block text-danger price" price="4.99">4.99</span> L.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title">kozbra | كزبره</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+        <div class=" bg-dark product border p-3 rounded col-lg-3 col-m-6 col-xs-12" style="width:350px;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa fa-bomb "> </i>
+                    <span id="widge" class="ms-3 d-none " >SALE</span></div>
+                <img src="./img/stack-carrots-bowl-marble.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute">12.49 L.E</span>
+                    <span class="d-block text-danger price"price = "8.49">8.49</span> L.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title">carrot | جزر</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+        <div class=" bg-dark product border p-3 rounded col-lg-3 col-m-6 col-xs-12" style="width:350px;" price="5">
+            <div  class="img-div rounded position-relative" >
+                <div  class="position-absolute top-0 end-0 bg-danger p-2 rounded">
+                    <i class="fa-regular fa-money-bill-1"></i>
+                    <span id="widge" class="ms-3 d-none " >50%OFF</span></div>
+                <img src="./img/essential-oil-peppermint-bottle-with-fresh-green-peppermint.jpg"  style="width: 100%;" class="rounded" width="290"height='250' alt="product" class="product-img">
+            </div><!-- /img-div -->
+            <div class="product-info d-flex mt-3 ">
+                <p class="p-3 border-end">
+                    <span class="text-decoration-line-through text-mute">7.00 L.E</span>
+                    <span class="d-block text-danger price"price='3.49'>3.49</span> L.E</p>
+                <p class="ms-3 ">
+                    <span class="fs-5 product-title">green mint | نعناع اخضر</span>
+                <span class="text-success d-block ">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </span></p>
+            </div><!-- /product-info -->
+            <hr class="mt-1 ">
+            <button class="btn bg-success m-auto d-block w-50 add">add to cart</button>
+        </div><!-- /broduct -->
+    </div><!-- /container -->
+</div>
+
+
+    
+    <!-- <ul class="list d-flex  flex-column">
+        <li price="50000">iphone 14 pro max</li>
+        <li price="17000">iphone 11 pro</li>
+        <li price="10000">reno 7 5g</li>
+    </ul>
+    <div class="content "></div>
+    <button class="btn" id="btn1">show price</button>
+    <div class="price"></div> -->
+    <script src="./js/script.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
