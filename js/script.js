@@ -63,21 +63,33 @@ cartPage.addEventListener("click",function goTOCart(){
   location="cart.htm"
 })
 let productsFetchedFromApi;
+let end = 20;
+let currentPage = 1 ;
+let itemPerPage = 20 ;
 loadProducts()
 // productmarketdata
 function  loadProducts(){
   loading()
-  axios.get("https://dummyjson.com/products?limit=10")
+  axios.get("https://dummyjson.com/products?limit=100")
   .then(function (response) {
     // handle success
-    stopLoading()
+    setTimeout(()=>{
+      stopLoading()
+      console.log("shit")
+    } ,3000)
     selectedSort.addEventListener("change",()=>{
       console.log("hiudshfuh")
       sortProduct(response.data.products,selectedSort.value)
       drawData(response.data.products)
     })
     productsFetchedFromApi = response.data.products
-    drawData (response.data.products)
+    drawPagination(productsFetchedFromApi.length,20)
+    // drawData (response.data.products)
+    let displayedProdecuts=productsFetchedFromApi.slice(1,21)
+    let pages =Array.from(document.querySelectorAll(".page")) 
+    pages[0].classList.add("active")
+    console.log(displayedProdecuts)
+    drawData(displayedProdecuts)
     getBrands(response.data.products)
     getStock(response.data.products)
     filter(response.data.products)
@@ -94,7 +106,7 @@ function  loadProducts(){
       }
       addToFav(id,productsFetchedFromApi)
       console.log(id)
-    })            
+    })
     })
     console.log(response);
   })
@@ -107,34 +119,6 @@ setTimeout(() => {
   console.log(productsFetchedFromApi);
 }, 3000); //
 console.log(prdcts)
-// loadBanner
-// loadBanner()
-function loadBanner(){
-  loading()
-  fetch("https://dummyjson.com/products/category/furniture")
-  .then(response=>{
-    if(!response.ok){
-      throw new Error
-    }
-    return response.json()
-  }).then(data =>{
-      console.log(data)
-      stopLoading();
-      drawBanners(data.products)
-    }).catch(error=>
-    console.error("eroor is"+error))
-}
-
-// draw banners
-function drawBanners(arr){
-  arr.map((banner)=>{
-    bannerContainer.innerHTML+=`
-    <div class="carousel-item " data-bs-interval="3000">
-      <img src="${banner.thumbnail}" style="height: 40vh !important;" class=" d-block w-100" alt="banner">
-    </div>
-    `})
-  bannerContainer.firstElementChild.classList.add("active")
-}
 
   // draw pageProduct
 function drawData (arr){
@@ -182,6 +166,7 @@ arr.map(function (ele){{
 let favIcon = document.querySelectorAll(".fav-icon")
 console.log(favIcon)
 setFav(favIcon)
+
 }
 
 
@@ -419,12 +404,16 @@ function search(arr){
 }
 // loading
 function loading(){
+  let body = document.querySelector(".body")
   let load = document.querySelector("#load")
+  body.classList.add("d-none")
   load.style.setProperty("display","flex",'important')
 }
 // stop loading
 function stopLoading(){
+  let body = document.querySelector(".body")
   let load = document.querySelector("#load")
+  body.classList.remove("d-none")
   load.style.setProperty("display","none",'important')
 }
 
@@ -676,33 +665,7 @@ function updateQuantity(event) {
       getTotalPrice();
     }
   });
-// show numper of product in the page
-// let allProducts = document.querySelectorAll(".product"); 
-// let currentPage = 1 ;
-// let itemPerPage = 4 ;
-// let displaedProdecuts=productsData.slice(1,5)
-// let end = 4;
-// function pagination(e){
-//   let target = e.target;
-//   // target.classList.add('active')
-//   currentPage = target.textContent
-//   let start = (currentPage-1)*itemPerPage;
-//   let end   = start+itemPerPage;
-//   displaedProdecuts = productsData.slice(start,end)
-//   allProductsContainer.innerHTML=""
-//   drawData(displaedProdecuts)
-//   if(target){
-//   console.log(start,end)}
-// }
-// console.log(displaedProdecuts)
-// drawData(displaedProdecuts)
-// let onePage     = document.querySelector(".pagination");
-// onePage.addEventListener("click", function (e) {
-//   const target = e.target;
-//   if (target) {
-//     pagination(e);
-//   }
-// });
+
 
 // fav
 let goToFavPage = document.querySelector(".fav-page");
@@ -710,3 +673,91 @@ goToFavPage.addEventListener("click",()=>{
   location.href="fav.htm"
   console.log("sagfuhcgjahkjh")
 });
+
+// show numper of product in the page
+
+function next(btn){
+  let pages =Array.from(document.querySelectorAll(".page")) 
+    if(currentPage<pages.length){
+      pages.map(pageBtn=>pageBtn.classList.remove("active"))
+      currentPage++;
+      pages[currentPage-1].classList.add("active")
+      let start = (currentPage-1)*itemPerPage;
+      let end   = start+itemPerPage;
+      displayedProdecuts = productsFetchedFromApi.slice(start,end)
+      drawData(displayedProdecuts)
+      btn.classList.remove('d-none')
+    }if(currentPage==pages.length){
+      btn.classList.add('d-none')
+  }
+}
+function back(btn){
+
+  let pages =Array.from(document.querySelectorAll(".page")) 
+    if(currentPage > 1){
+      console.log(currentPage)
+      pages.map(pageBtn=>pageBtn.classList.remove("active"))
+      currentPage--;
+      pages[currentPage-1].classList.add("active")
+      let start = (currentPage-1)*itemPerPage;
+      let end   = start+itemPerPage;
+      displayedProdecuts = productsFetchedFromApi.slice(start,end)
+      drawData(displayedProdecuts)
+    }if(currentPage==1){
+      btn.classList.add('d-none')    }
+}
+function pagination(btn){
+  let pages =Array.from(document.querySelectorAll(".page")) 
+
+      document.querySelector(".next").classList.remove('d-none')
+      if(btn.textContent==5){
+        document.querySelector(".next").classList.add('d-none')
+      }    document.querySelector(".back").classList.remove('d-none')
+      if(btn.textContent==1){
+        document.querySelector(".back").classList.add('d-none')
+      }
+      pages.map(pageBtn=>pageBtn.classList.remove("active"))
+          btn.classList.add('active')
+          currentPage = parseInt(btn.textContent)
+          let start = (currentPage-1)*itemPerPage;
+          let end   = start+itemPerPage;
+          displayedProdecuts = productsFetchedFromApi.slice(start,end)
+          drawData(displayedProdecuts)
+}
+
+// draw pagination 
+function drawPagination(length,perPage){
+  let paginationPlace = document.querySelector(".pagination") 
+let pages = Math.ceil(length/perPage)
+paginationPlace.innerHTML = `
+<li class="page-item "  style="cursor:pointer">
+<a class="page-link back" onclick="back(this)">Previous</a>
+</li>`
+for(let i = 1 ; i<=pages ; i++){
+  paginationPlace.innerHTML += `
+  <li class="page-item"><a class="page-link page"  style="cursor:pointer" onclick="pagination(this)">${i}</a></li>
+  `}
+  paginationPlace.innerHTML += `
+<li class="page-item">
+<a class="page-link next" onclick="next(this)" style="cursor:pointer">Next</a>
+</li>`
+}
+
+// let darkMode = document.querySelector(".dark")
+// darkMode.addEventListener("click",()=>{
+//   document.querySelector("body").style.backgroundColor = "#e5e5e5"
+//   let bgDark = document.querySelectorAll(".bg-dark")
+//   let textLight = document.querySelectorAll(".text-light")
+//   bgDark.forEach((bg) => {
+//     bg.classList.remove("bg-dark");
+//     bg.classList.add("bg-light")
+//   });
+
+//   textLight.forEach((color) => {
+//     color.classList.remove("text-dark");;
+//     color.classList.add("text-dark");
+//   });
+
+
+// console.log(bgDark)
+// })
