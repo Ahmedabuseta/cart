@@ -1,7 +1,7 @@
-button{
+/* button{
     display: none;
     color: blue;
-}
+} */
 .d-none{
     display: block;
 }
@@ -15,19 +15,19 @@ button{
   }
 
 .toast{
-    animation: show 3s forwards ;
+    animation: show 2.5s forwards ;
 }
 @keyframes show {
     0% {
         opacity: 1;
     }
-    99% {
-        opacity: .7;
-    }
     100%{
         opacity: 0;
         display: none;
     }
+}
+#product-counter{
+    font-size: 10px !important;
 }
 @media (max-width:700px){
     .carousel-item img {
@@ -40,4 +40,44 @@ button{
 .product{
     background-color: #363c3e;
     border-color: #363c3e;
+}.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    border: none;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #e0e0e0;
+}
+
+.pagination-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.prev-btn, .next-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.prev-btn:hover:not(:disabled), .next-btn:hover:not(:disabled) {
+    background-color: #0056b3;
 }
